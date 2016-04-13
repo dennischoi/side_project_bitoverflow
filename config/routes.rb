@@ -1,8 +1,18 @@
 Rails.application.routes.draw do
 
+
   root 'forums#index'
 
-  resources :forums
+  resources :forums #do
+  # resources :replies
+  #end
+
+  resources :users, except: %i(index destroy)
+  #only: %i(new create show edit update)
+
+
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
