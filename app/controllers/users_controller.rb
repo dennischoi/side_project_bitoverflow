@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to root_url
+      redirect_to root_url, notice: 'Thanks for signing up!'
     else
       render 'new'
     end
@@ -17,12 +17,12 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find_by(params[:id])
+    @user = User.find(params[:id])
   end
 
   def update
-    @user = User.find_by(params[:id])
-    if @user.authenticate(params[:old_password]) && @user.update_attributes(user_params)
+    @user = User.find(params[:id])
+    if (params[:old_password]) == @user.password && @user.update_attributes(user_params)
       redirect_to user_url(@user)
     else
       render 'edit'

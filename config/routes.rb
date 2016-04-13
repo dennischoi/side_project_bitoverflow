@@ -1,21 +1,18 @@
 Rails.application.routes.draw do
 
 
-  get 'sessions/new'
-
-  get 'sessions/create'
-
-  get 'sessions/destroy'
-
-  get 'new/create'
-
-  get 'new/destroy'
+  # get 'sessions/new'
+  #
+  # get 'sessions/create'
+  #
+  # get 'sessions/destroy'
 
   root 'forums#index'
 
   resources :forums #do
   # resources :replies
   #end
+  resources :sessions, only: [:new, :create, :destroy]
 
   resources :users, except: %i(index destroy)
   #only: %i(new create show edit update)
