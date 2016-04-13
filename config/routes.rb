@@ -1,6 +1,16 @@
 Rails.application.routes.draw do
 
 
+  get 'sessions/new'
+
+  get 'sessions/create'
+
+  get 'sessions/destroy'
+
+  get 'new/create'
+
+  get 'new/destroy'
+
   root 'forums#index'
 
   resources :forums #do
