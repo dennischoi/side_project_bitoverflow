@@ -1,2 +1,22 @@
-<h1>Forums#show</h1>
-<p>Find me in app/views/forums/show.html.erb</p>
+<h1><%= @forum.title %></h1>
+
+<%= link_to "Back", root_url %> | <%= link_to "edit", edit_forum_path(@forum.id) %>
+
+<div class="">
+<h3>
+  Titties
+</h3>
+  <%= @forum.title %>
+</div>
+
+<div class="">
+<h3>
+  D-Cups
+</h3>
+  <%= @forum.description %>
+</div>
+<p>
+  <%= @forum.post %>
+</p>
+
+<%= link_to 'Delete', @forum, method: :delete, data: {confirm: "Really?"} %>

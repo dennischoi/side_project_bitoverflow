@@ -1,2 +1,7 @@
-<h1>Forums#edit</h1>
-<p>Find me in app/views/forums/edit.html.erb</p>
+<h1>Edit</h1>
+
+<%= render 'forms' %>
+
+<%= link_to 'Back', forum_path(@forum.id) %>
+
+<!-- <%= link_to 'Delete', @forum, method: :delete, data: {confirm: "Really?"} %> -->

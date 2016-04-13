@@ -1,6 +1,6 @@
 class ForumsController < ApplicationController
   def index
-    @forum = Forum.all
+    @forums = Forum.all
   end
 
   def new
@@ -26,6 +26,16 @@ class ForumsController < ApplicationController
   end
 
   def update
+    @forum = Forum.find(params[:id])
+
+    if @forum.update_attributes(forum_params)
+     redirect_to forums_url(@forum)
+   elsif @forum.destroy
+     redirect_to forums_url
+   else
+      render :edit
+    end
+
   end
 
   def destroy
@@ -34,4 +44,8 @@ class ForumsController < ApplicationController
     redirect_to forums_url
   end
 
+  private
+  def forum_params
+    params.require(:forum).permit(:title, :post, :description)
+  end
 end
